@@ -1,4 +1,4 @@
-let myLibrary = [new Book("fuck", "fuck", "fuck", "fuck")];
+let myLibrary = ["fuck"];
 
 function Book(title, author, pages, read) {
     this.title = title;
@@ -14,39 +14,47 @@ function addBookToLibrary() {
 
 function render() {
     var body = document.querySelector('#container');
-    for (currBookIndex in myLibrary) {
-        const currBook = myLibrary[currBookIndex];
-
-        // creating a new card to be displayed
+    for (currBook in myLibrary) {
         var currCard = document.createElement("div");
         currCard.classList.add("card");
         var descriptionCard = document.createElement("div");
         descriptionCard.classList.add("description");
-
-        var bookTitle = document.createElement("h3");
-        bookTitle.id = "title";
-        bookTitle.textContent = currBook.title;
-
-        var author = document.createElement("p");
+        var author = document.createElement("h4");
         author.textContent = currBook.author;
-
-        var pages = document.createElement("p");
-        pages.textContent = currBook.pages;
-
-        var read = document.createElement("p");
-        read.textContent = currBook.read;
-        
-        descriptionCard.appendChild(bookTitle);
-        descriptionCard.appendChild(document.createElement("hr"));
-        descriptionCard.appendChild(author);
-        descriptionCard.appendChild(pages);
-        descriptionCard.appendChild(read);
+        descriptionCard.appendChild
         currCard.appendChild(descriptionCard);
         body.appendChild(currCard);
     }
 }
 
-var newBookButton = document.querySelector("#nbbutton");
-newBookButton.addEventListener("click", () => {})
-
 render();
+
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+console.log(document.getElementsByClassName("close")[0]);
+
+console.log(document.querySelector(".close"));
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
