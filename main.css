@@ -57,11 +57,14 @@
   width: 50%; /* Could be more or less, depending on screen size */
 }
 
+.close-container {
+  display: flex;
+  justify-content: flex-end;
+}
 /* The Close Button */
 .close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
+  color: #aaa;  
+  font-size: 30px;
   font-weight: bold;
 }
 
@@ -73,10 +76,11 @@
 }
 
 /* Style inputs */
-input[type=text], select {
+input[type=text], select, input[type=number] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
+  margin-bottom: 30px;
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;

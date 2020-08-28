@@ -1,4 +1,4 @@
-let myLibrary = ["fuck"];
+let myLibrary = [new Book("a", "a", "a", "y")];
 
 function Book(title, author, pages, read) {
     this.title = title;
@@ -14,14 +14,17 @@ function addBookToLibrary() {
 
 function render() {
     var body = document.querySelector('#container');
-    for (currBook in myLibrary) {
+    for (currBookIndex in myLibrary) {
+        var currBook = myLibrary[currBookIndex]
         var currCard = document.createElement("div");
         currCard.classList.add("card");
         var descriptionCard = document.createElement("div");
         descriptionCard.classList.add("description");
-        var author = document.createElement("h4");
-        author.textContent = currBook.author;
-        descriptionCard.appendChild
+        var title = document.createElement("h4");
+        console.log(currBook);
+        title.textContent = currBook.title;
+        alert(title.textContent);
+        descriptionCard.appendChild(title);
         currCard.appendChild(descriptionCard);
         body.appendChild(currCard);
     }
@@ -38,9 +41,6 @@ var btn = document.getElementById("myBtn");
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
-console.log(document.getElementsByClassName("close")[0]);
-
-console.log(document.querySelector(".close"));
 
 // When the user clicks on the button, open the modal
 btn.onclick = function() {
@@ -58,3 +58,21 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+
+var submitBtn = document.getElementsByName("submit")[0];
+submitBtn.addEventListener("click", () => {
+  var authName = document.getElementsByName("authorname")[0].value;
+  var bookName = document.getElementsByName("booktitle")[0].value;
+  var bookPage = document.getElementsByName("bookpage")[0].value;
+  var readResp = document.getElementsByName("readresp")[0];
+  readResp = readResp.options[readResp.selectedIndex].value;
+  if (authName !== "" && bookName !== "" && bookPage !== "" && readResp !== "") {
+    var newBook = new Book(bookName, authName, bookPage, readResp);
+    myLibrary.push(newBook);
+  }
+  // console.log(authName);
+  // console.log(bookName);
+  // console.log(bookPage);
+  // console.log(readResp.options[readResp.selectedIndex].value);
+  // console.log(authName === "");
+})
